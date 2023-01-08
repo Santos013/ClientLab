@@ -1,5 +1,42 @@
 ﻿using HelloWord.Classes;
 
+PessoaFisica metodosPf = new PessoaFisica();
+PessoaJuridica metodosPj = new PessoaJuridica();
+
+
+//Endereço PF
+Endereco endPf = new Endereco();
+endPf.Logradouro = "Rua Adelmo Aires";
+endPf.Numero = 123;
+endPf.Comercial = false;
+
+// Cadastrando Pessoa Física
+PessoaFisica novaPf = new PessoaFisica();
+novaPf.Nome = "Felipe";
+novaPf.Cpf = "5500225544";
+novaPf.DataNascimento = "02/10/1993";
+novaPf.Rendimento = 9000;
+novaPf.Endereco = endPf;
+
+//Exibindo Pessoa Física
+Console.WriteLine($"**** Pessoa Física ****");
+Console.WriteLine(@$"
+Nome: {novaPf.Nome}
+Cpf: {novaPf.Cpf}
+Data Nascimento: {novaPf.DataNascimento}
+Maior de Idade: {novaPf.ValidarDataNascimento(novaPf.DataNascimento)}
+Rendimento: R${novaPf.Rendimento}
+Endereço: {novaPf.Endereco.Logradouro}
+Numero: {novaPf.Endereco.Numero}
+Endereço Comercial: {novaPf.Endereco.Comercial}
+");
+
+
+// ********** atividade ER3 - ValidarDataNascimento ***********
+// PessoaFisica novaPf = new PessoaFisica();
+
+// Console.WriteLine( $"Maior de Idade? {novaPf.ValidarDataNascimento("02/10/1993")}");
+
 
 //Endereço PJ
 Endereco endPj = new Endereco();
@@ -16,36 +53,7 @@ novaPj.RazaoSocial = "Grupo Atacado FS Ltda";
 novaPj.Rendimento = 137000;
 novaPj.Endereco = endPj;
 
-
-//Endereço PF
-Endereco endPf = new Endereco();
-endPf.Logradouro = "Rua Adelmo Aires";
-endPf.Numero = 123;
-endPf.Comercial = false;
-
-// Cadastrando Pessoa Física
-PessoaFisica novaPf = new PessoaFisica();
-
-novaPf.Nome = "Felipe";
-novaPf.Cpf = "5500225544";
-novaPf.DataNascimento = "02/10/1993";
-novaPf.Rendimento = 9000;
-novaPf.Endereco = endPf;
-
-
-//Exibindo Pessoa Física
-Console.WriteLine($"**** Pessoa Física ****");
-Console.WriteLine(@$"
-Nome: {novaPf.Nome}
-Cpf: {novaPf.Cpf}
-Data Nascimento: {novaPf.DataNascimento}
-Rendimento: R${novaPf.Rendimento}
-Endereço: {novaPf.Endereco.Logradouro}
-Numero: {novaPf.Endereco.Numero}
-Endereço Comercial: {novaPf.Endereco.Comercial}
-");
-
-Console.WriteLine();
+//Console.WriteLine();
 
 //Exibindo Pessoa Jurídica
 Console.WriteLine($"**** Pessoa Jurídica ****");
