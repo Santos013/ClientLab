@@ -1,4 +1,4 @@
-# ClientLab web server-side - referente ao ER2
+# ClientLab web server-side - referente ao ER2 e 3
 
 
 Trabalho desenvolvido em Linguagem C# para o módulo de Back-end do curso de Formação em Programção Full-Stack da Instituição SENAI De Informática. Este trabalho atende aos requsitos da Situação-Problema estabelecida abaixo.
