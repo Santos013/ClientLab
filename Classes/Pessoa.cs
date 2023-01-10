@@ -1,7 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using HelloWord.Interfaces;
 
 namespace HelloWord.Classes
@@ -12,6 +8,7 @@ namespace HelloWord.Classes
       public Endereco? Endereco;
       public float? Rendimento;
 
+        //Implementação da IPessoa
         public float PagarImposto(float rendimento)
         {
             throw new NotImplementedException();
