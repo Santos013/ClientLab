@@ -4,7 +4,6 @@
 
 PessoaFisica metodosPf = new PessoaFisica();
 
-
 // CADASTRO
 //Endereço PF
 Endereco endPf = new Endereco();
@@ -14,10 +13,11 @@ endPf.Comercial = false;
 
 //Cadastrando Pessoa Física
 PessoaFisica novaPf = new PessoaFisica();
+
 novaPf.Nome = "Felipe";
 novaPf.Cpf = "5500225544";
 novaPf.DataNascimento = "02/10/1993";
-novaPf.Rendimento = 9000;
+novaPf.Rendimento = 1501;
 novaPf.Endereco = endPf;
 
 //Exibindo Pessoa Física
@@ -27,8 +27,9 @@ Console.WriteLine(@$"
 Nome: {novaPf.Nome}
 Cpf: {novaPf.Cpf}
 Data Nascimento: {novaPf.DataNascimento}
-Maior de Idade: {novaPf.ValidarDataNascimento(novaPf.DataNascimento)}
+Maior de Idade: {metodosPf.ValidarDataNascimento(novaPf.DataNascimento)}
 Rendimento: R${novaPf.Rendimento}
+Rendimento Líquido: R${metodosPf.PagarImposto((float)novaPf.Rendimento)}
 Endereço: {novaPf.Endereco.Logradouro}
 Numero: {novaPf.Endereco.Numero}
 Endereço Comercial: {novaPf.Endereco.Comercial}
@@ -39,7 +40,7 @@ Endereço Comercial: {novaPf.Endereco.Comercial}
 
 PessoaJuridica metodosPj = new PessoaJuridica();
 
-
+//CADASTRO
 //Endereço PJ
 Endereco endPj = new Endereco();
 endPj.Logradouro = "Rua Getulio Vargas";
@@ -64,6 +65,7 @@ Razão Social: {novaPj.RazaoSocial}
 Cnpj: {novaPj.Cnpj}
 Cnpj Válido: {metodosPj.ValidarCnpj(novaPj.Cnpj)}
 Rendimento: R${novaPj.Rendimento}
+Rendimento Líquido: R${metodosPj.PagarImposto((float)novaPj.Rendimento)}
 Endereço: {novaPj.Endereco.Logradouro}
 Numero: {novaPj.Endereco.Numero}
 Endereço Comercial: {novaPj.Endereco.Comercial}
