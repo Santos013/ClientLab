@@ -229,11 +229,11 @@ Numero: {pessoa.Endereco.Numero}
                         //Cadastrando Pessoa Jurídica
                         PessoaJuridica novaPj = new PessoaJuridica();
 
-                        Console.WriteLine($"Digite o nome: ");
-                        novaPj.Nome = Console.ReadLine();
-
                         Console.WriteLine($"Digite a Razão Social: ");
                         novaPj.RazaoSocial = Console.ReadLine();
+
+                        Console.WriteLine($"Digite o nome: ");
+                        novaPj.Nome = Console.ReadLine();
 
                         Console.WriteLine($"Digite o CNPJ: ");
                         novaPj.Cnpj = Console.ReadLine();
