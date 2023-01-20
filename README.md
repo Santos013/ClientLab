@@ -1,4 +1,4 @@
-# ClientLab ClientLab web server-side
+# ClientLab web server-side
 
 Trabalho desenvolvido para o módulo de Back-end do curso de Formação em Programação Full-Stack da Instituição SENAI de informatica SP. Este trabalho atende aos requsitos da seguinte Situação-Problema:
 
