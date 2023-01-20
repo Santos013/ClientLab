@@ -1,6 +1,6 @@
 # ClientLab ClientLab web server-side
 
-Trabalho desenvolvido em Linguagem C# para o módulo de Back-end do curso de Formação em Programação Full-Stack da Instituição SENAI De Informática. Este trabalho atende aos requsitos da Situação-Problema estabelecida abaixo.
+Trabalho desenvolvido para o módulo de Back-end do curso de Formação em Programação Full-Stack da Instituição SENAI de informatica SP. Este trabalho atende aos requsitos da seguinte Situação-Problema:
 
 
 **Situação Problema:**
@@ -19,3 +19,21 @@ Robustez, performance e escalabilidade são alguns dos termos valorizados e util
 • o sistema deve armazenar os registros em arquivos.Você deverá se atentar às regras estabelecidas, tratando os valores não permitidos inseridos pelos usuários.
 
 Para isso, você deverá se atentar às regras estabelecidas, tratando os valores não permitidos inseridos pelos usuários.
+
+**Tecnologia Utilizada:**
+
+• Linguagem de programação C#;
+
+**Pré-requisitos:
+
+• IDE que suporte a linguagem de programação C#;
+
+**Execução**
+
+• Após abrir a pasta do projeto na IDE, digitar o comando 'dotnet run' no terminal;
+
+• Em seguida escolher um das opções disponíveis no menu principal: opção '1' para acessar o submenu de 'Pessoa Física' e '2' para acessar o submenu de 'Pessoa Jurídica' ou '0' para sair do sistema;
+
+• Após acessar o submenu desejado, escolher umas das opções disponíveis de acordo com a necessidade, sendo '1' para cadastrar uma nova pessoa, '2' para listar as pessoas já cadastradas e '0' para retornar ao menu anterior;
+
+• Para finalizar o sistema basta digitar '0' no menu principal.
