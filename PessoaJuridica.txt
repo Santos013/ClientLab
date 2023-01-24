@@ -1,1 +1,1 @@
-Sapataria Bom Jose,Fernando de Souza,50542695000101,Avenida Goias,2700,true,3200
+Sapataria Bom Jose,Fernado de S,50542695000101,3500,Avenida Goias,211,False

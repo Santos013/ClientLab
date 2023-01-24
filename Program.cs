@@ -1,5 +1,6 @@
 ﻿using HelloWord.Classes;
 
+// métodos genéricos
 PessoaFisica metodosPf = new PessoaFisica();
 PessoaJuridica metodosPj = new PessoaJuridica();
 List<PessoaFisica> listaPf = new List<PessoaFisica>(); //lista/array
@@ -90,7 +91,6 @@ do
                         {
                             endPf.Comercial = false;
                         }
-                        endPf.Comercial = false;
 
                         //Cadastrando Pessoa Física
                         PessoaFisica novaPf = new PessoaFisica();
@@ -110,10 +110,13 @@ do
                         novaPf.Endereco = endPf;
 
                         //cadastrar na lista
-                        listaPf.Add(novaPf);
+
+                        using (StreamWriter arquivoPf = new StreamWriter("./PessoaFisisca.txt", false))
+                        {
+                            arquivoPf.WriteLine($"{novaPf.Nome},{novaPf.Cpf},{novaPf.DataNascimento},{novaPf.Rendimento},{novaPf.Endereco.Logradouro},{novaPf.Endereco.Numero},{novaPf.Endereco.Comercial}");
+                        }
+
                         Console.WriteLine($"Cadastro com Sucesso");
-
-
                         Utils.ParadaNoConsole("Tecle <ENTER> para continuar");
                         break;
 
@@ -122,24 +125,28 @@ do
 
                         Console.WriteLine($"**** Listagem Pessoa Física ****");
 
-                        foreach (var pessoa in listaPf)
+                        using (StreamReader arquivoPf = new StreamReader("./PessoaFisca.txt"))
                         {
-                            //Exibindo Pessoa Física
+                            string? linhaPessoa;
 
-                            Console.WriteLine(@$"
-Nome: {pessoa.Nome}
-Cpf: {pessoa.Cpf}
-Data Nascimento: {pessoa.DataNascimento}
-Maior de Idade: {metodosPf.ValidarDataNascimento(pessoa.DataNascimento)}
-Rendimento: R${pessoa.Rendimento}
-Rendimento Líquido: R${metodosPf.PagarImposto((float)pessoa.Rendimento)}
-Endereço: {pessoa.Endereco.Logradouro}
-Numero: {pessoa.Endereco.Numero}
+                            while ((linhaPessoa = arquivoPf.ReadLine()) != null)
+                            {
+                                string[] dadosPessoa = linhaPessoa.Split(",");
+                                Console.WriteLine(@$"
+Nome: {dadosPessoa[0]}
+Cpf: {dadosPessoa[1]}
+Data Nascimento: {dadosPessoa[2]}
+Maior de Idade: {metodosPf.ValidarDataNascimento(dadosPessoa[2])}
+Rendimento: R$ {dadosPessoa[3]}
+Rendimento Liquido: R$ {metodosPf.PagarImposto(float.Parse(dadosPessoa[3]))}
+Endereço: {dadosPessoa[4]}
+Número: {dadosPessoa[5]}
 ");
 
-                            Console.WriteLine("Endereço Comercial: " + (pessoa.Endereco.Comercial ? "Sim" : "Não"));
+                                Console.WriteLine("Endereço Comercial: " + (Boolean.Parse(dadosPessoa[6]) ? "Sim" : "Não"));
 
-                        }//fim do foreach
+                            }
+                        }
 
                         Console.WriteLine($"**** Fim da Listagem ****");
                         Utils.ParadaNoConsole("Tecle <ENTER> para continuar");
@@ -161,24 +168,18 @@ Numero: {pessoa.Endereco.Numero}
                         Utils.ParadaNoConsole("Tecle <ENTER> para continuar");
                         break;
                 }
+                
             } while (opcaoPf != "0");
 
-
-
-            Utils.ParadaNoConsole("Tecle <ENTER> para continuar");
+            Utils.ParadaNoConsole("Tecle <ENTER> para continuar!");
             Console.Clear();
             break;
 
 
-
-
-
-
-
         case "2":
 
-            //Pessoa Física
-            // *************** PESSOA FISICA ***************
+            //Pessoa Jurídica
+            // *************** PESSOA JURÍDICA ***************
 
 
             string? opcaoPj; //obs* fora do laço por causa do escopo
@@ -244,33 +245,45 @@ Numero: {pessoa.Endereco.Numero}
                         novaPj.Endereco = endPj;
 
                         //cadastrar na lista
-                        listaPj.Add(novaPj);
+
+                        using (StreamWriter arquivoPj = new StreamWriter("./PessoaJuridica.txt", true))
+                        {
+                            arquivoPj.WriteLine($"{novaPj.RazaoSocial},{novaPj.Nome},{novaPj.Cnpj},{novaPj.Rendimento},{novaPj.Endereco.Logradouro},{novaPj.Endereco.Numero},{novaPj.Endereco.Comercial}");
+                        }
+
                         Console.WriteLine($"Cadastro com Sucesso");
 
                         Utils.ParadaNoConsole("Tecle <ENTER> para continuar");
                         break;
 
+
                     case "2": //listar pessoa jurídica
                         Console.Clear();
 
-                        //Exibindo Pessoa Jurídica
                         Console.WriteLine($"**** Listagem Pessoa Jurídica ****");
 
-                        foreach (var pessoa in listaPj)
+                        using (StreamReader arquivoPj = new StreamReader("./PessoaJuridica.txt"))
                         {
+                            string? linhaPessoa;
 
-                            Console.WriteLine(@$"
-Nome: {pessoa.Nome}
-Razão Social: {pessoa.RazaoSocial}
-Cnpj: {pessoa.Cnpj}
-Cnpj Válido: {metodosPj.ValidarCnpj(pessoa.Cnpj)}
-Rendimento: R${pessoa.Rendimento}
-Rendimento Líquido: R${metodosPj.PagarImposto((float)pessoa.Rendimento)}
-Endereço: {pessoa.Endereco.Logradouro}
-Numero: {pessoa.Endereco.Numero}
-Endereço Comercial: {pessoa.Endereco.Comercial}
+                            while ((linhaPessoa = arquivoPj.ReadLine()) != null)
+                            {
+                                string[] dadosPessoa = linhaPessoa.Split(",");
+                                Console.WriteLine(@$"
+RazãoSocial: {dadosPessoa[0]}
+Nome: {dadosPessoa[1]}
+Cnpj: {dadosPessoa[2]}
+Rendimento: R${dadosPessoa[3]}
+Rendimento Líquido: R${metodosPj.PagarImposto(float.Parse(dadosPessoa[3]))}
+Endereço: {dadosPessoa[4]}
+Número: {dadosPessoa[5]}
 ");
+
+                                Console.WriteLine("Endereço Comercial: " + (Boolean.Parse(dadosPessoa[6]) ? "Sim" : "Não"));
+                            }
                         }
+
+
                         Console.WriteLine($"**** Fim da Listagem ****");
                         Utils.ParadaNoConsole("Tecle <ENTER> para continuar");
                         break;
@@ -324,8 +337,40 @@ Endereço Comercial: {pessoa.Endereco.Comercial}
 
 
 
-
+// ----------------------------------------------------------------------------------
 // ********** atividade ER3 - ValidarDataNascimento ***********
 // PessoaFisica novaPf = new PessoaFisica();
 
 // Console.WriteLine( $"Maior de Idade? {novaPf.ValidarDataNascimento("02/10/1993")}");
+
+
+
+
+
+// -----------------------------------------------------------------------------------
+//aprendisagem
+
+// Gravação
+// using (StreamWriter arquivo = new StreamWriter($"./PessoaFisica.txt", true))
+// {
+//     arquivo.WriteLine("Fernando de Souza");
+//     arquivo.Close();
+// }
+
+// using (StreamWriter arquivo = new StreamWriter($"./PessoaJuridica.txt", true))
+// {
+//     arquivo.WriteLine("Sapataria Bom Jose");
+//     arquivo.Close();
+// }
+
+// Leitura
+// using (StreamReader arquivo = new StreamReader("./PessoaFisica.txt"))
+// {
+//     string? linha;
+
+//     while ( (linha = arquivo.ReadLine()) != null)
+//     {
+//         Console.WriteLine($"Nome: {linha}");
+
+//     }
+// }

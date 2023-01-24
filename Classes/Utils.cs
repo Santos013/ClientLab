@@ -13,7 +13,7 @@ namespace HelloWord.Classes
             Console.ReadLine();//parada no sistema
         }
 
-        public static void Loading(string texto, int milesegundos, int qtdPontinhos, ConsoleColor corFundo, ConsoleColor corFonte)
+        public static void Loading(string texto, int milesegundos, int qtdPontinhos, ConsoleColor corFundo = ConsoleColor.DarkBlue, ConsoleColor corFonte = ConsoleColor.White)
         {
             Console.BackgroundColor = corFundo;//cor de fundo
             Console.ForegroundColor = corFonte;//cor da fonte
